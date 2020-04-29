@@ -53,13 +53,13 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Choose one: All, Add, OnePerson, OneAddress, Delete")
     else:
-        if sys.argv[1] == 'All':
+        if sys.argv[1].lower() == 'all':
             print()
             All()
-        elif sys.argv[1] == 'Add':
+        elif sys.argv[1].lower() == 'add':
             name = input("Enter name: ") 
             address = input("Enter address: ")
             print()
             Add(name, address)
-        elif sys.argv[1] == 'Dict':
+        elif sys.argv[1].lower() == 'dict':
             CreateDict()
