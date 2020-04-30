@@ -1,6 +1,5 @@
 #!/bin/env python3
 
-import sys, re
 
 """User specifies a file name and a person name,
 the program then finds the address of the person named"""
@@ -24,9 +23,10 @@ def Add(N, A):
 # Returns the name provided the address
 def OnePerson(A):
     Dict = CreateDict()
-    for key, value in Dict:
+    for key, value in Dict.items():
         if A == value:
-            return key
+            print("The address you entered belongs to: " + key)
+        else: return "Name not found"
 
 
 # Returns the address provided the name
@@ -38,9 +38,9 @@ def CreateDict():
     Dict = {}
     f = open('doc/AddressBook.txt', 'r')
     for line in f:
-        # line.strip('\n')
-        if line not in Dict:
-            strip = line.split(':', 1)
+        nline = line.strip('\n')
+        if nline not in Dict:
+            strip = nline.split(':', 1)
             Dict[strip[0]] = strip[1]
     f.close
     return Dict
@@ -73,12 +73,10 @@ def Menu():
         OnePerson(address)
     else:
         print("Not valid command, try again")
-        print()
 
         
     Menu()
     
-
 if __name__ == "__main__":
 
     Menu()

@@ -1,0 +1,3 @@
+While the function 'OnePerson()' works, if there is a space at the beginning or end it will not recognize
+for now, I will alter 'AddressBook.txt' to fix this, but it is by no means a permanant solution.
+
