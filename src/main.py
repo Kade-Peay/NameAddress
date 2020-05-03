@@ -16,24 +16,29 @@ def All():
 def Add(N, A):
     f = open('doc/AddressBook.txt', 'a')
     f.write('\n')
-    f.write(N + ": " + A)
+    f.write(N + ":" + A)
     f.close
     print("Wrote to 'AddressBook.txt'")
+
+#Enter name to delete
+def Delete():
+    pass
 
 # Returns the name provided the address
 def OnePerson(A):
     for key, value in Dict.items():
         if A == value:
-            print("The address you entered belongs to: " + key)
-
+            return("The address you entered belongs to: " + key)
+    else: return "Name not found"
 
 
 # Returns the address provided the name
 def OneAddress(N):
     for key, value in Dict.items():
         if N == key:
-            print(N + "'s address is " + value)
-        else: return "Address not found"
+            return(N + "'s address is " + value)
+    return "Not found"
+
 
 # First create the dictionary and then use the other functions to search
 def CreateDict():
@@ -47,14 +52,10 @@ def CreateDict():
     f.close
     return Dict
 
-# Deletes one person and their address
-def Delete():
-    pass
-
 
 def Menu():
     print()
-    print("Choose one: All, Add, OnePerson, OneAddress")
+    print("Choose one: All, Add, OnePerson, OneAddress, or Delete")
     print("To exit enter X")
     print()
     option = input(">? ")
@@ -72,11 +73,15 @@ def Menu():
     elif option.lower() == 'oneperson':
         address = input("Enter address: ")
         print()
-        OnePerson(address)
+        print(OnePerson(address))
     elif option.lower() == 'oneaddress':
         name = input("Enter name: ")
         print()
-        OneAddress(name)
+        print(OneAddress(name))
+    elif option.lower() == 'delete':
+        name = input("Enter Name to delete: ")
+        print()
+        print(Delete)
     else:
         print("Not valid command, try again")
 
