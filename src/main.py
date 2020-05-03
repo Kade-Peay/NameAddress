@@ -22,16 +22,18 @@ def Add(N, A):
 
 # Returns the name provided the address
 def OnePerson(A):
-    Dict = CreateDict()
     for key, value in Dict.items():
         if A == value:
             print("The address you entered belongs to: " + key)
-        else: return "Name not found"
+
 
 
 # Returns the address provided the name
 def OneAddress(N):
-    pass
+    for key, value in Dict.items():
+        if N == key:
+            print(N + "'s address is " + value)
+        else: return "Address not found"
 
 # First create the dictionary and then use the other functions to search
 def CreateDict():
@@ -71,6 +73,10 @@ def Menu():
         address = input("Enter address: ")
         print()
         OnePerson(address)
+    elif option.lower() == 'oneaddress':
+        name = input("Enter name: ")
+        print()
+        OneAddress(name)
     else:
         print("Not valid command, try again")
 
@@ -78,5 +84,5 @@ def Menu():
     Menu()
     
 if __name__ == "__main__":
-
+    Dict = CreateDict()
     Menu()
