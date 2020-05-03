@@ -1,9 +1,8 @@
 #!/bin/env python3
 
-
-"""User specifies a file name and a person name,
-the program then finds the address of the person named"""
-
+"""User specifies a command on the menu
+dependent on which option, the needed
+inputs are asked for."""
 
 # Displays all names and addresses in the file
 def All():
@@ -20,9 +19,15 @@ def Add(N, A):
     f.close
     print("Wrote to 'AddressBook.txt'")
 
-#Enter name to delete
-def Delete():
-    pass
+# Enter name to delete
+def Delete(N):
+    with open("doc/AddressBook.txt","r+") as f:
+        new_f = f.readlines()
+        f.seek(0)
+        for line in new_f:
+            if str(N) not in line:
+                f.write(line)
+        f.truncate()
 
 # Returns the name provided the address
 def OnePerson(A):
@@ -31,14 +36,12 @@ def OnePerson(A):
             return("The address you entered belongs to: " + key)
     else: return "Name not found"
 
-
 # Returns the address provided the name
 def OneAddress(N):
     for key, value in Dict.items():
         if N == key:
             return(N + "'s address is " + value)
     return "Not found"
-
 
 # First create the dictionary and then use the other functions to search
 def CreateDict():
@@ -52,7 +55,7 @@ def CreateDict():
     f.close
     return Dict
 
-
+# Recursive Main menu
 def Menu():
     print()
     print("Choose one: All, Add, OnePerson, OneAddress, or Delete")
@@ -81,7 +84,8 @@ def Menu():
     elif option.lower() == 'delete':
         name = input("Enter Name to delete: ")
         print()
-        print(Delete)
+        Delete(name)
+        print(name + " deleted")
     else:
         print("Not valid command, try again")
 
