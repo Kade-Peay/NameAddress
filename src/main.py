@@ -17,7 +17,7 @@ def Add(N, A):
     f.write('\n')
     f.write(N + ":" + A)
     f.close
-    print("Wrote to 'AddressBook.txt'")
+    print(f"Wrote {N} and {A} to 'AddressBook.txt'")
 
 # Enter name to delete
 def Delete(N):
