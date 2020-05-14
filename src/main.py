@@ -59,35 +59,29 @@ def CreateDict():
 def Menu():
     print()
     print("Choose one: All, Add, OnePerson, OneAddress, or Delete")
-    print("To exit enter X")
-    print()
+    print("To exit enter X\n")
     option = input(">? ")
     print()
     if option.lower() == 'x':
         quit()
     elif option.lower() == 'all':
-        print()
         All()
     elif option.lower() == 'add':
         name = input("Enter name: ") 
         address = input("Enter address: ")
-        print()
         Add(name, address)
     elif option.lower() == 'oneperson':
         address = input("Enter address: ")
-        print()
         print(OnePerson(address))
     elif option.lower() == 'oneaddress':
         name = input("Enter name: ")
-        print()
         print(OneAddress(name))
     elif option.lower() == 'delete':
         name = input("Enter Name to delete: ")
-        print()
         Delete(name)
-        print(name + " deleted")
+        print(name + " deleted\n")
     else:
-        print("Not valid command, try again")
+        print("Not valid command, try again\n")
 
         
     Menu()
